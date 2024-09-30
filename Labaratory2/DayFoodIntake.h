@@ -41,7 +41,7 @@ public:
 		return volumeCcal;
 	}
 	/// <summary>Метод получения данных</summary>
-	void EnteringData( unsigned int& massG);
+	void EnteringData(const unsigned int& massG);
 	//Метод вывода данных
 	void OutputData();
 private:

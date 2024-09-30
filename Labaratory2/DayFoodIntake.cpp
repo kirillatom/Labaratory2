@@ -4,15 +4,13 @@ using namespace std;
 
 //Метод получения данных
 
-void DayFoodIntake::EnteringData( unsigned int& massG)
+void DayFoodIntake::EnteringData(const unsigned int& massG)
 {
-	if ((cin >> massG).fail()) 
+	if (massG <= 0) 
 	{
 		throw exception((string("Ошибка! Некорректный ввод данных")
 		    + ". Пришло: "
 			+ to_string(massG)).c_str());
-
-		
 	}
 
 }
