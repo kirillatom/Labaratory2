@@ -1,22 +1,9 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 class DayFoodIntake
 {
-	//Массивы
-	unsigned int* dynamincProteinArray;
-	unsigned int* dynamincFatArray;
-	unsigned int* dynamincCarbohydrateArray;
-	//Поля
-	unsigned int massG; //Масса продукта в граммах
-	unsigned int volumeCcal; //Объём кило каллорий
-	unsigned int countIntake; //Количество приёмов пищи
-	//Константы
-	static const unsigned int PROTEIN_CCAL_1G = 4; 
-	static const unsigned int FAT_CCAL_1G = 9;
-	static const unsigned int CARBOHYDRATE_CCAL_1G = 4;
-
 public:
 	/// <summary>
 	/// Конструктор с параметром
@@ -53,13 +40,23 @@ public:
 	{
 		return volumeCcal;
 	}
-
-
-	
 	/// <summary>Метод получения данных</summary>
-	void EnteringData();
+	void EnteringData( unsigned int& massG);
 	//Метод вывода данных
 	void OutputData();
+private:
+	//Массивы
+	unsigned int* dynamincProteinArray;
+	unsigned int* dynamincFatArray;
+	unsigned int* dynamincCarbohydrateArray;
+	//Поля
+	unsigned int massG; //Масса продукта в граммах
+	unsigned int volumeCcal; //Объём кило каллорий
+	unsigned int countIntake; //Количество приёмов пищи
+	//Константы
+	static const unsigned int PROTEIN_CCAL_1G = 4;
+	static const unsigned int FAT_CCAL_1G = 9;
+	static const unsigned int CARBOHYDRATE_CCAL_1G = 4;
 
 };
 

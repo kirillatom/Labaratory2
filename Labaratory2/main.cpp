@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-
+#include <string>	
 #include "DayFoodIntake.h"
 
 using namespace std;
@@ -8,6 +8,7 @@ int main() {
     setlocale(LC_ALL, "ru");
     int count = 0;
     bool check = true;
+	unsigned int mass;
 	cout << "\t\t\t------------------------------------------------------------------" << endl;
 	cout << "\t\t\t|Программа хранения и обработки данных о суточном рационе питания|" << endl;
 	cout << "\t\t\t------------------------------------------------------------------" << endl;
@@ -30,7 +31,11 @@ int main() {
 	} while (check);
 
     DayFoodIntake intake(count);
-    intake.EnteringData();
+	cout << "------------------------------------------------------------------" << endl;
+	cout << "|Введите массу продукта в граммах                                |" << endl;
+	cout << "------------------------------------------------------------------" << endl;
+	cin >> mass;
+    intake.EnteringData(mass);
 	intake.OutputData();
 
 
