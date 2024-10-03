@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class DayFoodIntake
@@ -12,20 +13,19 @@ public:
 
 	DayFoodIntake(const int& countIntake) : 
 		countIntake(countIntake), 
-		volumeCcal(0) {
+		volumeCcal(0) 
+	{
 
 		dynamincProteinArray = new unsigned int[countIntake];
 		dynamincFatArray = new unsigned int[countIntake];
 		dynamincCarbohydrateArray = new unsigned int[countIntake];
 	}
-
-	// Деструктор
-	~DayFoodIntake() {
+	~DayFoodIntake() 
+	{
 		delete[] dynamincProteinArray;
 		delete[] dynamincFatArray;
 		delete[] dynamincCarbohydrateArray;
 	}
-
 	// Геттеры
 	unsigned int GetCountIntake() const
 	{
@@ -41,8 +41,8 @@ public:
 		return volumeCcal;
 	}
 	/// <summary>Метод получения данных</summary>
-	void EnteringData(const unsigned int& massG);
-	//Метод вывода данных
+	void EnteringData(const unsigned int& massG,const unsigned int& mealNumber);
+/// <summary> Метод вывода данных </summary>
 	void OutputData();
 private:
 	//Массивы
@@ -53,6 +53,7 @@ private:
 	unsigned int massG; //Масса продукта в граммах
 	unsigned int volumeCcal; //Объём кило каллорий
 	unsigned int countIntake; //Количество приёмов пищи
+	unsigned int mealNumber; //Номер приёма пищи 
 	//Константы
 	static const unsigned int PROTEIN_CCAL_1G = 4;
 	static const unsigned int FAT_CCAL_1G = 9;

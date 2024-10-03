@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <string>	
+#include <string.h>	
 #include "DayFoodIntake.h"
 
 using namespace std;
@@ -9,40 +9,32 @@ int main() {
     int count = 0;
     bool check = true;
 	unsigned int mass;
+	unsigned int massAll = 0;
+	unsigned int meal;
+	unsigned int n = 0; //переменная необходимая для корректной работы цикла do while
+	
+
 	cout << "\t\t\t------------------------------------------------------------------" << endl;
 	cout << "\t\t\t|Программа хранения и обработки данных о суточном рационе питания|" << endl;
 	cout << "\t\t\t------------------------------------------------------------------" << endl << endl;
 
-	cout << "Введите количество приёмов пищи" << endl;
+	cout << "Введите количество приёмов пищи: " << endl;
 	cin >> count;
-    DayFoodIntake intake(count);
-	
-	cout << "Введите массу продукта в граммах" << endl;
-	
-	cin >> mass;
-    intake.EnteringData(mass);
-	//intake.OutputData();
-
-
+	n = count;
+	DayFoodIntake intake(count);
+	do {
+		cout << "Введите номер приёма пищи (1 - Завтрак, 2 - Обед, 3 - Ужин)" << endl;
+		cin >> meal;
+		cout << "Введите массу продукта в граммах: " << endl;
+		cin >> mass;
+		massAll += mass;
+		n--;
+		intake.EnteringData(massAll, meal);
+	} while (n > 0);
+   
+	cout << "Количество приёмов пищи: " << intake.GetCountIntake() << endl;
+	cout << "Общая масса продуктов: " << intake.GetMassG() << endl;
+	intake.OutputData();
+	cout << "Общее количество каллорий: " << intake.GetVolumeCcal() << endl;
     return 0;
 }
-// TODO Добавить исключения
-// TODO 
-
-//do {
-//	cout << "------------------------------------------------------------------" << endl;
-//	cout << "|Введите количество приёмов пищи                                 |" << endl;
-//	cout << "------------------------------------------------------------------" << endl;
-//	if ((cin >> count).good() && count > 0) {
-//		check = false;
-//	}
-//	if (cin.fail() || count <= 0)
-//	{
-//		cout << "------------------------------------------------------------------" << endl;
-//		cout << "|ОШИБКА!!! Введите корректные данные!                            |" << endl;
-//		cout << "------------------------------------------------------------------" << endl;
-//		cin.clear();
-//	}
-//	cin.ignore(100, '\n');
-//
-//} while (check);
