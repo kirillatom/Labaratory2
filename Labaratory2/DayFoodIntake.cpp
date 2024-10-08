@@ -1,7 +1,7 @@
 #include "DayFoodIntake.h"
 
 DayFoodIntake::DayFoodIntake()
-	: countIntake(10), volumeCcal(0), massG(0) {
+	: countIntake(10), volumeCcal(0), massG(0){
 
 	dynamincProteinArray = new float[countIntake];
 	dynamincFatArray = new float[countIntake];
@@ -18,11 +18,6 @@ DayFoodIntake::~DayFoodIntake()
 	delete[] dynamincProteinArray;
 	delete[] dynamincFatArray;
 	delete[] dynamincCarbohydrateArray;
-}
-
-unsigned int DayFoodIntake::GetCount() const
-{
-	return count;
 }
 
 float DayFoodIntake::GetMassG() const
@@ -56,19 +51,19 @@ void DayFoodIntake::MealLog(const float& massG, const unsigned int& mealNumber, 
 		  + ". Пришло: "
 		  + to_string(mealNumber)).c_str());
   }
-  if (protein <= 0)
+  if (protein < 0)
   {
 	  throw exception((string("Ошибка! Некорректный ввод данных")
 		  + ". Пришло: "
 		  + to_string(protein)).c_str());
   }
-  if (fat <= 0)
+  if (fat < 0)
   {
 	  throw exception((string("Ошибка! Некорректный ввод данных")
 		  + ". Пришло: "
 		  + to_string(fat)).c_str());
   }
-  if (carbohydrate <= 0)
+  if (carbohydrate < 0)
   {
 	  throw exception((string("Ошибка! Некорректный ввод данных")
 		  + ". Пришло: "
@@ -93,14 +88,13 @@ void DayFoodIntake::MealLog(const float& massG, const unsigned int& mealNumber, 
 
 void DayFoodIntake::OutputData()
 { 
-	for (int i = 0; i <= countIntake; i++) {
+	for (int i = 0; i < countIntake; i++) {
 		if (dynamincProteinArray[i] != -1 && dynamincFatArray[i] != -1 && dynamincCarbohydrateArray[i] != -1)
 		{
-			count++;
 			cout << "Сводка БЖУ за " << i + 1 << " приём пищи: " << endl;
-			cout << "Белки: " << dynamincProteinArray[i] << " " 
-				 << "Жиры: " << dynamincFatArray[i] << " " 
-				 << "Углеводы: "<< dynamincCarbohydrateArray[i] << endl; 
+			cout << "Белки: " << dynamincProteinArray[i] << " |" 
+				 << " Жиры: " << dynamincFatArray[i] << " |" 
+				 << " Углеводы: "<< dynamincCarbohydrateArray[i] << endl; 
 		}
 	}
 	cout << "Общее количество белков: " << proteinsAll << endl;

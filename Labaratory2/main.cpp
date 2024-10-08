@@ -59,7 +59,6 @@ int main() {
         
     }
     cout << endl;
-    cout << "Количество приёмов пищи: " << Intake.GetCount() << endl;
     cout << "Общая масса продуктов: " << Intake.GetMassG() << endl;
     Intake.OutputData();
     cout << "Общее количество калорий: " << Intake.GetVolumeCcal() << endl;

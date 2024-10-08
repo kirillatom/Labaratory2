@@ -12,7 +12,6 @@ public:
 	// Деструктор
 	~DayFoodIntake();
 	// Геттеры
-	unsigned int GetCount() const;
 	float GetMassG() const;
 	float GetVolumeCcal() const;
 	/// <summary>Метод расчёта данных</summary>
@@ -36,7 +35,6 @@ private:
 	float proteinsAll = 0;
 	float fatsAll = 0;
 	float carbohydratesAll = 0;
-	unsigned int count = 0;
 	//Константы
 	static const unsigned int PROTEIN_CCAL_1G = 4;
 	static const unsigned int FAT_CCAL_1G = 9;
