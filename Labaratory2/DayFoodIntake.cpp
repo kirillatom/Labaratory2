@@ -1,159 +1,123 @@
 #include "DayFoodIntake.h"
-//Метод получения данных
 
-void DayFoodIntake::EnteringData(const unsigned int& massG, const unsigned int& mealNubmer)
+DayFoodIntake::DayFoodIntake() {}
+
+DayFoodIntake::DayFoodIntake(const int& countIntake) :
+	countIntake(countIntake),
+	volumeCcal(0),
+	massG(0)
 {
-	if (massG <= 0) 
+	dynamincProteinArray = new unsigned int[countIntake + 1];
+	
+	dynamincFatArray = new unsigned int[countIntake + 1];
+	
+	dynamincCarbohydrateArray = new unsigned int[countIntake + 1];
+	for (int i = 0; i < countIntake + 1; i++) 
 	{
-		throw exception((string("Ошибка! Некорректный ввод данных")
-		    + ". Пришло: "
-			+ to_string(massG)).c_str());
+		dynamincProteinArray[i] = 0;
 	}
-	if (mealNumber <= 0 && mealNumber > 3)
+	for (int i = 0; i < countIntake + 1; i++) 
 	{
-		throw exception((string("Ошибка! Некорректный ввод данных")
-			+ ". Пришло: "
-			+ to_string(mealNumber)).c_str());
+		dynamincFatArray[i] = 0;
 	}
-	this->massG = massG;
-	this->mealNumber = mealNubmer;
-	switch (mealNumber) 
+	for (int i = 0; i < countIntake + 1; i++) 
 	{
-	case 1:
-		cout << "Введите количество белков (на 100г продукта) за приём пищи - завтрак" << endl;
-		for (int i = 0; i < countIntake - 2; i++) 
-		{
-			cin >> dynamincProteinArray[i];
-			if (dynamincProteinArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincProteinArray[i])).c_str());
-			}
-			volumeCcal += dynamincProteinArray[i] * PROTEIN_CCAL_1G;
-		}
-		cout << "Введите количество жиров (на 100г продукта) за приём пищи - завтрак" << endl;
-		for (int i = 0; i < countIntake - 2; i++) 
-		{
-			cin >> dynamincFatArray[i];
-			if (dynamincFatArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincFatArray[i])).c_str());
-			}
-			volumeCcal += dynamincFatArray[i] * FAT_CCAL_1G;
-		}
-		cout << "Введите количество углеводов (на 100г продукта) за приём пищи - завтрак" << endl;
-		for (int i = 0; i < countIntake - 2; i++) {
-			cin >> dynamincCarbohydrateArray[i];
-			if (dynamincCarbohydrateArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincCarbohydrateArray[i])).c_str());
-			}
-			volumeCcal += dynamincCarbohydrateArray[i] * CARBOHYDRATE_CCAL_1G;
-		}
-		break;
-	case 2:
-		cout << "Введите количество белков (на 100г продукта) за приём пищи - обед" << endl;
-		for (int i = 1; i < countIntake - 1; i++) 
-		{
-			cin >> dynamincProteinArray[i];
-			if (dynamincProteinArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincProteinArray[i])).c_str());
-			}
-			volumeCcal += dynamincProteinArray[i] * PROTEIN_CCAL_1G;
-		}
-		cout << "Введите количество жиров (на 100г продукта) за приём пищи - обед" << endl;
-		for (int i = 1; i < countIntake - 1; i++) 
-		{
-			cin >> dynamincFatArray[i];
-			if (dynamincFatArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincFatArray[i])).c_str());
-			}
-			volumeCcal += dynamincFatArray[i] * FAT_CCAL_1G;
-		}
-		cout << "Введите количество углеводов (на 100г продукта) за приём пищи - обед" << endl;
-		for (int i = 1; i < countIntake - 1; i++) 
-		{
-			cin >> dynamincCarbohydrateArray[i];
-			if (dynamincCarbohydrateArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincCarbohydrateArray[i])).c_str());
-			}
-			volumeCcal += dynamincCarbohydrateArray[i] * CARBOHYDRATE_CCAL_1G;
-		}
-		break;
-	case 3: 
-
-		cout << "Введите количество белков (на 100г продукта) за приём пищи - ужин" << endl;
-		for (int i = 2; i < countIntake; i++) 
-		{
-			cin >> dynamincProteinArray[i];
-			if (dynamincProteinArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincProteinArray[i])).c_str());
-			}
-			volumeCcal += dynamincProteinArray[i] * PROTEIN_CCAL_1G;
-		}
-		cout << "Введите количество жиров (на 100г продукта) за приём пищи - ужин" << endl;
-		for (int i = 2; i < countIntake; i++) 
-		{
-			cin >> dynamincFatArray[i];
-			if (dynamincFatArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincFatArray[i])).c_str());
-			}
-			volumeCcal += dynamincFatArray[i] * FAT_CCAL_1G;
-		}
-		cout << "Введите количество углеводов (на 100г продукта) за приём пищи - ужин" << endl;
-		for (int i = 1; i < countIntake; i++) 
-		{
-			cin >> dynamincCarbohydrateArray[i];
-			if (dynamincCarbohydrateArray[i] <= 0)
-			{
-				throw exception((string("Ошибка! Некорректный ввод данных")
-					+ ". Пришло: "
-					+ to_string(dynamincCarbohydrateArray[i])).c_str());
-			}
-			volumeCcal += dynamincCarbohydrateArray[i] * CARBOHYDRATE_CCAL_1G;
-		}
-		break;
+		dynamincCarbohydrateArray[i] = 0;
 	}
 }
+DayFoodIntake::~DayFoodIntake()
+{
+	delete[] dynamincProteinArray;
+	delete[] dynamincFatArray;
+	delete[] dynamincCarbohydrateArray;
+}
+
+unsigned int DayFoodIntake::GetCountIntake() const
+{
+	return countIntake;
+}
+
+unsigned int DayFoodIntake::GetMassG() const
+{
+	return massG;
+}
+
+unsigned int DayFoodIntake::GetVolumeCcal() const
+{
+	return volumeCcal;
+}
+
+void DayFoodIntake::EnteringData(const unsigned int& massG, const unsigned int& mealNubmer,
+  const unsigned int& protein, const unsigned int& fat, const unsigned int& carbohydrate) {
+  
+  if (massG <= 0) 
+  {
+    throw exception((string("Ошибка! Некорректный ввод данных")
+      + ". Пришло: "
+      + to_string(massG)).c_str());
+  }
+  
+  if (mealNubmer < 1 || mealNubmer > 8) 
+  {
+    throw exception((string("Ошибка! Некорректный ввод данных")
+      + ". Пришло: "
+      + to_string(mealNubmer)).c_str());
+  }
+  if (protein <= 0)
+  {
+	  throw exception((string("Ошибка! Некорректный ввод данных")
+		  + ". Пришло: "
+		  + to_string(protein)).c_str());
+  }
+  if (fat <= 0)
+  {
+	  throw exception((string("Ошибка! Некорректный ввод данных")
+		  + ". Пришло: "
+		  + to_string(fat)).c_str());
+  }
+  if (carbohydrate <= 0)
+  {
+	  throw exception((string("Ошибка! Некорректный ввод данных")
+		  + ". Пришло: "
+		  + to_string(carbohydrate)).c_str());
+  }
+
+
+  this->massG += massG;
+
+  dynamincProteinArray[mealNubmer - 1] += protein;
+  volumeCcal += dynamincProteinArray[mealNubmer - 1] * PROTEIN_CCAL_1G;
+  dynamincFatArray[mealNubmer - 1] += fat;
+  volumeCcal += dynamincFatArray[mealNubmer - 1] * FAT_CCAL_1G;
+  dynamincCarbohydrateArray[mealNubmer - 1] += carbohydrate;
+  volumeCcal += dynamincCarbohydrateArray[mealNubmer - 1] * CARBOHYDRATE_CCAL_1G;
+
+  proteinsAll += dynamincProteinArray[mealNubmer - 1];
+  fatsAll += dynamincFatArray[mealNubmer - 1];
+  carbohydratesAll += dynamincCarbohydrateArray[mealNubmer - 1];
+
+  }
 
 void DayFoodIntake::OutputData()
 {
-	unsigned int protein = 0;
-	unsigned int fat = 0;
-	unsigned int carbohydrate = 0;
-
+	cout << "Общее количество белка за суточный трёхразовый рацион питания: " << endl;
 	for (int i = 0; i < countIntake; i++) {
-		protein += dynamincProteinArray[i];
+		cout << dynamincProteinArray[i] << " ";
 	}
-	cout << "Общее количество белка за суточный трёхразовый рацион питания: " << protein << endl;
+	cout << endl;
+	cout << "Общее количество жиров за суточный трёхразовый рацион питания: "  << endl;
 	for (int i = 0; i < countIntake; i++) {
-		fat += dynamincFatArray[i];
+		cout << dynamincFatArray[i] << " ";
 	}
-	cout << "Общее количество жиров за суточный трёхразовый рацион питания: " << fat << endl;
+	cout << endl;
+	cout << "Общее количество углеводов за суточный трёхразовый рацион питания: " << endl;
 	for (int i = 0; i < countIntake; i++) {
-		carbohydrate += dynamincCarbohydrateArray[i];
+		cout << dynamincCarbohydrateArray[i] << " ";
 	}
-	cout << "Общее количество углеводов за суточный трёхразовый рацион питания: " << carbohydrate << endl;
+	cout << endl;
+	cout << proteinsAll << endl;
+	cout << fatsAll << endl;
+	cout << carbohydratesAll << endl;
+	
 
 }
-
