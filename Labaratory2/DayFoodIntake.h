@@ -6,38 +6,37 @@ using namespace std;
 class DayFoodIntake
 {
 public:
-	/// </summary>Конструктор по умолчанию </summary>
-	DayFoodIntake();;
 	/// </summary>Конструктор с параметром</summary>
 	/// <param name="countIntake"></param>
-	DayFoodIntake(const int& countIntake);
+	DayFoodIntake();
 	// Деструктор
 	~DayFoodIntake();
 	// Геттеры
-	unsigned int GetCountIntake() const;
-	unsigned int GetMassG() const;
-	unsigned int GetVolumeCcal() const;
+	unsigned int GetCount() const;
+	float GetMassG() const;
+	float GetVolumeCcal() const;
 	/// <summary>Метод расчёта данных</summary>
-	void EnteringData(const unsigned int& massG, const unsigned int& mealNubmer,
-		const unsigned int& protein, const unsigned int& fat, const unsigned int& carbohydrate);
+	void MealLog(const float& massG, const unsigned int& mealNumber,
+		const float& protein, const float& fat, const float& carbohydrate);
     /// <summary> Метод вывода данных </summary>
 	void OutputData();
 private:
 	//Массивы
-	unsigned int* dynamincProteinArray;
-	unsigned int* dynamincFatArray;
-	unsigned int* dynamincCarbohydrateArray;
+	float* dynamincProteinArray;
+	float* dynamincFatArray;
+	float* dynamincCarbohydrateArray;
 	//Поля
-	unsigned int massG; //Масса продукта в граммах
-	unsigned int volumeCcal; //Объём кило каллорий
+	float massG; //Масса продукта в граммах
+	float volumeCcal; //Объём кило каллорий
 	unsigned int countIntake; //Количество приёмов пищи
 	unsigned int mealNumber; //Номер приёма пищи 
-	unsigned int protein; 
-	unsigned int fat;
-	unsigned int carbohydrate;
-	unsigned int proteinsAll = 0;
-	unsigned int fatsAll = 0;
-	unsigned int carbohydratesAll = 0;
+	float protein; 
+	float fat;
+	float carbohydrate;
+	float proteinsAll = 0;
+	float fatsAll = 0;
+	float carbohydratesAll = 0;
+	unsigned int count = 0;
 	//Константы
 	static const unsigned int PROTEIN_CCAL_1G = 4;
 	static const unsigned int FAT_CCAL_1G = 9;
