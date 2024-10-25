@@ -1,5 +1,4 @@
 ﻿#include "DayFoodIntake.h"
-#include <iostream>
 
 using namespace std;
 
@@ -8,6 +7,7 @@ int main() {
     float mass;
     unsigned int meal;
     string productName;
+    int mealcount;
     int count = 0;
     unsigned int massAll = 0;
     bool continueInput = true;
@@ -18,13 +18,17 @@ int main() {
     cout << "\t\t\t|Программа хранения и обработки данных о суточном рационе питания|" << endl;
     cout << "\t\t\t------------------------------------------------------------------" << endl << endl;
     
-    DayFoodIntake Intake;
+    cout << "Введите количество приёмов пищи" << endl;
+    cin >> mealcount;
+
+    DayFoodIntake Intake(mealcount);
 
     while (continueInput) {
         cout << "Введите номер приёма пищи : ";
         cin >> meal;
         productInput = true; 
-        while (productInput) {
+        while (productInput) 
+        {
             
             cout << "Введите массу продукта в граммах: ";
             cin >> mass;
@@ -56,6 +60,15 @@ int main() {
             {
                 continueInput = false;
             }
+            if (meal >= mealcount) 
+            {
+                {
+                    throw exception((string("Ошибка! Некорректный ввод данных")
+                        + ". Пришло: "
+                        + to_string(meal)).c_str());
+                }
+            }
+            
         
     }
     cout << endl;

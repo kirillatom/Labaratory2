@@ -8,17 +8,20 @@ class DayFoodIntake
 public:
 	/// </summary>Конструктор с параметром</summary>
 	/// <param name="countIntake"></param>
-	DayFoodIntake();
+	DayFoodIntake(const unsigned int& countIntake);
 	// Деструктор
 	~DayFoodIntake();
 	// Геттеры
 	float GetMassG() const;
 	float GetVolumeCcal() const;
 	/// <summary>Метод расчёта данных</summary>
-	void MealLog(const float& massG, const unsigned int& mealNumber,
-		const float& protein, const float& fat, const float& carbohydrate);
+	void MealLog(const float& massG,
+		const unsigned int&   mealNumber,
+		const float&          protein, 
+		const float& fat, 
+		const float& carbohydrate);
     /// <summary> Метод вывода данных </summary>
-	void OutputData();
+	void OutputData() const;
 private:
 	//Массивы
 	float* dynamincProteinArray;
@@ -39,5 +42,6 @@ private:
 	static const unsigned int PROTEIN_CCAL_1G = 4;
 	static const unsigned int FAT_CCAL_1G = 9;
 	static const unsigned int CARBOHYDRATE_CCAL_1G = 4;
+	static const int NEGATIVE_VALUE = -1;
 
 };
